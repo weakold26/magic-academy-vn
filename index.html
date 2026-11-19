@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>하늘에 뜬 마법학원</title>
+<meta name="description" content="마력을 감당하지 못하는 편입생과, 그를 감당하기로 한 두 사람. 브라우저에서 바로 하는 판타지 비주얼 노벨.">
+<meta name="theme-color" content="#0a1024">
+<meta property="og:title" content="하늘에 뜬 마법학원">
+<meta property="og:description" content="마석이 갈라진 날, 두 사람이 내 손을 잡았다. 별빛 아래 마법학원 로맨스 비주얼 노벨.">
+<meta property="og:type" content="website">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230e1533'/%3E%3Cpath d='M50 22l6.5 15.5L72 44l-15.5 6.5L50 66l-6.5-15.5L28 44l15.5-6.5z' fill='%23dfe8ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body class="loading is-title">
+
+<div id="app">
+  <div id="stage">
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg" id="bgA"></div>
+      <div class="bg" id="bgB"></div>
+      <div class="bg-tint"></div>
+    </div>
+
+    <div class="char-layer" id="char-layer" aria-hidden="true">
+      <img class="char char--side" id="charSide" alt="">
+      <img class="char char--main" id="charMain" alt="">
+    </div>
+
+    <div class="fx-layer" aria-hidden="true">
+      <div class="motes" id="motes"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <div id="chapter-card" aria-hidden="true"></div>
+
+    <div class="ui-layer">
+      <div id="hud">
+        <div id="chapter-chip">프롤로그</div>
+        <div class="affs">
+          <div class="aff" data-k="elize">
+            <span class="nm">엘리제</span>
+            <span class="bar"><i></i></span>
+            <span class="num">0</span>
+          </div>
+          <div class="aff" data-k="seia">
+            <span class="nm">세이아</span>
+            <span class="bar"><i></i></span>
+            <span class="num">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="topbar">
+        <button id="btn-log" class="icon" type="button" aria-label="백로그">로그</button>
+        <button id="btn-auto" class="icon" type="button" aria-label="자동 진행">자동</button>
+        <button id="btn-skip" class="icon" type="button" aria-label="빠르게 넘기기">스킵</button>
+        <button id="btn-save" class="icon" type="button" aria-label="저장">저장</button>
+        <button id="btn-load" class="icon" type="button" aria-label="불러오기">불러오기</button>
+        <button id="btn-bgm" class="icon" type="button" aria-label="소리 끄기">♪</button>
+        <button id="btn-menu" class="icon" type="button" aria-label="설정">설정</button>
+      </div>
+
+      <div id="choices" role="group" aria-label="선택지"></div>
+
+      <div id="dialogue">
+        <div id="namebox"><span id="name"></span></div>
+        <div id="text"></div>
+        <span id="next-ind" aria-hidden="true">▼</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- title -->
+  <section id="title-screen">
+    <div class="title-bg"></div>
+    <div class="title-inner">
+      <p class="kicker">AETHER ACADEMY · FIRST TERM</p>
+      <h1>하늘에 뜬<br><em>마법학원</em></h1>
+      <p class="tagline">마력을 감당하지 못하는 편입생과,<br>그를 감당하기로 한 두 사람.</p>
+      <div id="title-menu">
+        <button id="btn-start" class="btn" type="button">처음부터</button>
+        <button id="btn-continue" class="btn ghost" type="button">이어서 하기</button>
+        <button id="btn-gallery" class="btn ghost" type="button">
+          엔딩 도감 <span class="sub" id="gallery-count">0 / 5</span>
+        </button>
+        <button id="title-sound" class="link" type="button">소리 · 켜짐</button>
+      </div>
+      <div class="loader"><div id="loader-bar"></div></div>
+      <p class="credit">A VISUAL NOVEL · 2026</p>
+    </div>
+  </section>
+
+  <!-- ending -->
+  <section id="ending-screen" aria-live="polite"></section>
+
+  <!-- modal -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-title">저장</h3>
+        <button id="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/audio.js?v=1"></script>
+<script src="js/engine.js?v=1"></script>
+</body>
+</html>
