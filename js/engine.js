@@ -47,6 +47,7 @@
   var settings = { sound: true, bgm: true, speed: 24 };
   var autoTimer = null, autoOn = false, skipOn = false;
   var chars = { main: null, side: null };
+  var skipHistoryOnce = false;
 
   function newState() {
     return { node: null, aff: { elize: 0, seia: 0 }, flags: {}, chapter: '' };
@@ -414,8 +415,12 @@
     applyChars(n, key === 'elize' || key === 'seia' ? key : null);
 
     if (n.text) {
-      history.push({ who: n.who || '', text: n.text });
-      if (history.length > 500) history.shift();
+      if (skipHistoryOnce) {
+        skipHistoryOnce = false;
+      } else {
+        history.push({ who: n.who || '', text: n.text });
+        if (history.length > 500) history.shift();
+      }
       autosave();
     }
 
@@ -636,6 +641,7 @@
     closeModal();
     var n = nodes[data.node];
     if (n.ending && !n.text) { showEnding(n.ending); return; }
+    skipHistoryOnce = true;
     goNode(data.node, true);
   }
 
