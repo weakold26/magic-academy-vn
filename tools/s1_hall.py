@@ -189,4 +189,4 @@ def build(S):
     S.goto("d1_end")
 
     S.label("d1_end")
-    S.line(text="1장이 그렇게 지나갔다. 십일 주가 남았다.")
+    S.line(hide=True, hide2=True, text="1장이 그렇게 지나갔다. 십일 주가 남았다.")
