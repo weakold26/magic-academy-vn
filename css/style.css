@@ -86,8 +86,11 @@ body { overflow: hidden; }
 .char--side[data-who="elize"] { height: 82%; }
 .char--side[data-who="seia"] { height: 77%; }
 
-#char-layer.two .char--main { left: 33%; }
-#char-layer.two .char--side { left: 72%; }
+#char-layer.two .char--main { left: 30%; height: 88%; }
+#char-layer.two .char--main[data-who="seia"] { height: 83%; }
+#char-layer.two .char--side { left: 72%; height: 86%; }
+#char-layer.two .char--side[data-who="elize"] { height: 91%; }
+#char-layer.two .char--side[data-who="seia"] { height: 86%; }
 
 #stage.has-char .bg { transform: scale(1.05); }
 #stage.has-char .bg.on { transform: scale(1.02); }
@@ -749,8 +752,11 @@ body.is-ending #next-ind { opacity: 0 !important; transition: opacity 0.5s ease;
   .char[data-who="seia"] { height: 79%; }
   .char--side[data-who="elize"] { height: 66%; }
   .char--side[data-who="seia"] { height: 62%; }
-  #char-layer.two .char--main { left: 27%; }
-  #char-layer.two .char--side { left: 72%; }
+  #char-layer.two .char--main { left: 25%; height: 72%; }
+  #char-layer.two .char--main[data-who="seia"] { height: 68%; }
+  #char-layer.two .char--side { left: 73%; height: 70%; }
+  #char-layer.two .char--side[data-who="elize"] { height: 74%; }
+  #char-layer.two .char--side[data-who="seia"] { height: 70%; }
   #dialogue { padding: 18px 17px 22px; border-radius: 15px; min-height: 108px; }
   #namebox { left: 14px; top: -14px; font-size: 12.5px; padding: 5px 15px; }
   #text { font-size: 15.5px; line-height: 1.84; min-height: 3.2em; }
